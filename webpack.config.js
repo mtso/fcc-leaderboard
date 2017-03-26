@@ -18,7 +18,7 @@ module.exports = [
     module: {
       loaders: [
         {
-          test: /\.js$/,
+          test: /\.jsx{0,1}$/,
           exclude: /node_modules/,
           loader: 'babel-loader'}
       ]
@@ -49,12 +49,12 @@ module.exports = [
       ]
     },
     output: {
-      filename: 'style.css',
+      filename: 'styles.css',
       path: exportDir
     },
     plugins: [
       new ExtractTextPlugin({
-        filename: 'style.css',
+        filename: 'styles.css',
         disable: false,
         allChunks: true
       })

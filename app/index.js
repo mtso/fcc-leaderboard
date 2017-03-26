@@ -1,3 +1,6 @@
-var hello = "Hello world";
+const React = require('react')
+const ReactDOM = require('react-dom');
 
-console.log(hello);
+const TableCell = require('./components/TableCell.jsx')
+
+ReactDOM.render(<TableCell />, document.getElementById('app'))
