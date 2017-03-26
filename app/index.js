@@ -1,6 +1,21 @@
 const React = require('react')
 const ReactDOM = require('react-dom');
 
-const TableCell = require('./components/TableCell.jsx')
+const Table = require('./components/Table.jsx')
 
-ReactDOM.render(<TableCell />, document.getElementById('app'))
+const data = require('./data')
+
+const App = React.createClass({
+  render: function() {
+    return (
+      <div class='panel'>
+        <Table users={this.props.users} />
+      </div>
+    )
+  }
+})
+
+data.getRecent()
+  .then(function(users) {
+    ReactDOM.render(<App users={users} />, document.getElementById('app'))    
+  })
