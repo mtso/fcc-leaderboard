@@ -15,9 +15,7 @@ const TableCell = React.createClass({
         <td>
           {this.props.user.recent}
         </td>
-
         <td>
-        <span> — </span>
           {this.props.user.alltime}
         </td>
       </tr>
