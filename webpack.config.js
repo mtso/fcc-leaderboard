@@ -1,14 +1,19 @@
 var path = require('path');
+var exportDir = path.resolve(__dirname, './dist');
+
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: path.resolve(__dirname, './app/index.html'),
   filename: 'index.html',
   inject: 'body'
-})
+});
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-var exportDir = path.resolve(__dirname, './dist');
+var ExtractTextPluginConfig = new ExtractTextPlugin({
+  filename: 'styles.css',
+  disable: false,
+  allChunks: true
+});
 
 module.exports = [
   {
@@ -24,7 +29,7 @@ module.exports = [
       ]
     },
     output: {
-      filename: 'index_bundle.js',
+      filename: 'bundle.js',
       path: exportDir
     },
     plugins: [
@@ -53,11 +58,7 @@ module.exports = [
       path: exportDir
     },
     plugins: [
-      new ExtractTextPlugin({
-        filename: 'styles.css',
-        disable: false,
-        allChunks: true
-      })
+      ExtractTextPluginConfig
     ]
   }
 ];
