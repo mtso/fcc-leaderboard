@@ -23,7 +23,7 @@ module.exports = [
     module: {
       loaders: [
         {
-          test: /\.js$/,
+          test: /\.jsx{0,1}$/,
           exclude: /node_modules/,
           loader: 'babel-loader'}
       ]
@@ -58,7 +58,15 @@ module.exports = [
       path: exportDir
     },
     plugins: [
+<<<<<<< HEAD
       ExtractTextPluginConfig
+=======
+      new ExtractTextPlugin({
+        filename: 'styles.css',
+        disable: false,
+        allChunks: true
+      })
+>>>>>>> d469707e13846c46fbc03c176b1d65978cff0eae
     ]
   }
 ];
