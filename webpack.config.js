@@ -29,7 +29,7 @@ module.exports = [
       ]
     },
     output: {
-      filename: 'index_bundle.js',
+      filename: 'bundle.js',
       path: exportDir
     },
     plugins: [
@@ -58,15 +58,7 @@ module.exports = [
       path: exportDir
     },
     plugins: [
-<<<<<<< HEAD
       ExtractTextPluginConfig
-=======
-      new ExtractTextPlugin({
-        filename: 'styles.css',
-        disable: false,
-        allChunks: true
-      })
->>>>>>> d469707e13846c46fbc03c176b1d65978cff0eae
     ]
   }
 ];
