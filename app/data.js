@@ -1,25 +1,45 @@
+const config = require('config')
 
-/*
-https://fcctop100.herokuapp.com/api/fccusers/top/recent
-https://fcctop100.herokuapp.com/api/fccusers/top/alltime
-
-*/
-
-const recentUrl = 'https://fcctop100.herokuapp.com/api/fccusers/top/recent';
-const allTimeUrl = 'https://fcctop100.herokuapp.com/api/fccusers/top/alltime';
-
-exports.getRecent = function() {
+function getRecent() {
   return new Promise(function(resolve, reject) {
-    $.getJSON(recentUrl, function(data) {
+    $.getJSON(config.RECENT_URL, function(data) {
       resolve(data);
     })
   })
 }
 
-exports.getAllTime = function() {
+function getAllTime() {
   return new Promise(function(resolve, reject) {
-    $.getJSON(allTimeUrl, function(data) {
+    $.getJSON(config.ALLTIME_URL, function(data) {
       resolve(data);
     })
+  })
+}
+
+exports.getTopUsers = function() {
+  return new Promise(function(resolve, reject) {
+    var users = {};
+    var done = 0;
+    getRecent()
+      .then(function(recent) {
+        users.recent = recent;
+        emitDone()
+      })
+      .catch(rejectError)
+    getAllTime()
+      .then(function(allTime) {
+        users.allTime = allTime;
+        emitDone()
+      })
+      .catch(rejectError)
+    function emitDone() {
+      done++;
+      if (done > 1) {
+        resolve(users)
+      }
+    }
+    function rejectError(err) {
+      reject(err)
+    }
   })
 }
