@@ -1,14 +1,16 @@
-const Table = require('./components/Table.jsx')
-const ReactDOM = require('react-dom')
-const data = require('./data')
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Table from './components/Table.jsx'
+import data from './data'
 
-ReactDOM.render(
-  <Table />,
-  document.getElementById('app')
-)
 data.getTopUsers()
   .then(function(users) {
-    console.log(users)
+    // Render table here
+    console.log(users) // inspect the retrieved data
+    ReactDOM.render(
+      <Table users={users} />,
+      document.getElementById('app')
+    )
   })
   .catch(function(err) {
     console.error(err)

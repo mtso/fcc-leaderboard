@@ -1,16 +1,16 @@
-const React = require('react');
+import React, {Component} from 'react'
 
-const TableHeader = React.createClass({
-  render: function() {
+class TableHeader extends Component {
+  render() {
     return (
       <tr>
         <th>Rank</th>
         <th>Username</th>
-        <th onClick={this.props.handleRecent}>Recent</th>
-        <th onClick={this.props.handleAlltime}>All-Time</th>
+        <th><a href="#">Recent</a></th>
+        <th><a href="#">All-Time</a></th>
       </tr>
     )
   }
-})
+}
 
-module.exports = TableHeader;
+export default TableHeader

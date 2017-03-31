@@ -1,9 +1,7 @@
-const React = require('react')
+import React, {Component} from 'react'
 
-const TableCell = React.createClass({
-
-  render: function() {
-    console.log(Object.keys(this.props.user))
+class TableCell extends Component {
+  render() {
     return (
       <tr>
         <td>
@@ -21,6 +19,6 @@ const TableCell = React.createClass({
       </tr>
     )
   }
-});
+}
 
-module.exports = TableCell;
+export default TableCell

@@ -1,37 +1,26 @@
-const React = require('react');
+import React, {Component} from 'react'
+import TableHeader from './TableHeader.jsx'
+import TableCell from './TableCell.jsx'
 
-const TableCell = require('./TableCell.jsx');
-const TableHeader = require('./TableHeader.jsx');
-
-const Table = React.createClass({
-  getInitialState: function() {
-    this.handleRecent = this.props.handleRecent
-    this.handleAlltime = this.props.handleAlltime.bind(this)
-
-    return {
-      users: this.props.users
-    }
-  },
-  render: function() {
-    var cells = this.props.users.map(function(user, index) {
-      return (
-        <TableCell rank={index + 1} user={user} />
-      )
-    })
+class Table extends Component {
+  // constructor(props) {
+  //   super(props)
+  // }
+  render() {
+    let cells = this.props.users.recent.map(
+      (user, index) => <TableCell user={user} rank={index + 1} key={user.username} />
+    )
     return (
-      <table class="table">
-        <a href="#" onclick={this.props.handleAlltime}>click me</a>
-        <TableHeader 
-          handleRecent={this.props.handleRecent} 
-          handleAlltime={this.props.handleAlltime} />
-        {this.state.users.map(function(user, index) {
-          return (
-            <TableCell rank={index + 1} user={user} />
-          )
-        })}
+      <table>
+        <thead>
+          <TableHeader />
+        </thead>
+        <tbody>
+          {cells}
+        </tbody>
       </table>
     )
   }
-});
+}
 
-module.exports = Table;
+export default Table
