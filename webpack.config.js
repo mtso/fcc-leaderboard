@@ -1,5 +1,5 @@
 var path = require('path');
-var exportDir = path.resolve(__dirname, './dist');
+var exportDir = path.resolve(__dirname, './docs');
 
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({

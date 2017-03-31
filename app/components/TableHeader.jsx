@@ -5,7 +5,7 @@ class TableHeader extends Component {
     super(props)
   }
   render() {
-    let arrow = this.props.isAscending ? '▲' : '▼'
+    let arrow = this.props.isAscending ? '▲' : '▼' // '↑' : '↓'
     return (
       <tr>
         <th>Rank</th>
