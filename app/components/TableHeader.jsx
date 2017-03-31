@@ -5,12 +5,13 @@ class TableHeader extends Component {
     super(props)
   }
   render() {
+    let arrow = this.props.isAscending ? '▲' : '▼'
     return (
       <tr>
         <th>Rank</th>
         <th>Username</th>
-        <th><a href="#" onClick={this.props.handleRecent}>Recent</a></th>
-        <th><a href="#" onClick={this.props.handleAlltime}>All-Time</a></th>
+        <th><a href="#" onClick={this.props.handleRecent}>Recent {this.props.isRecentSelected ? arrow : ''}</a></th>
+        <th><a href="#" onClick={this.props.handleAlltime}>All-Time {!this.props.isRecentSelected ? arrow : ''}</a></th>
       </tr>
     )
   }

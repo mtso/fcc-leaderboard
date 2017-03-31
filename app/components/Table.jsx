@@ -46,12 +46,21 @@ class Table extends Component {
     }
     let users = this.props.users[type].sort(sorter)
     let cells = users.map(
-      (user, index) => <TableCell user={user} rank={index + 1} key={user.username} />
+      (user, index) => {
+        let rank = this.state.isAscending ? 100 - index : index + 1
+        return (
+          <TableCell user={user} rank={rank} key={user.username} />
+        )
+      }
     )
     return (
-      <table>
+      <table className='table'>
         <thead>
-          <TableHeader handleRecent={this.onRecentClick} handleAlltime={this.onAlltimeClick} />
+          <TableHeader
+            handleRecent={this.onRecentClick}
+            handleAlltime={this.onAlltimeClick}
+            isRecentSelected={this.state.isRecent}
+            isAscending={this.state.isAscending} />
         </thead>
         <tbody>
           {cells}
