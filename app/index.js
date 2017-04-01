@@ -13,8 +13,8 @@ class App extends React.Component {
     }
     return (
       <div>
-        <div class="row">
-          <div class="col-md-4 col-md-offset-4">
+        <div className="row">
+          <div className="col-md-4 col-md-offset-4">
             <h1 style={titleStyle}>FCC TOP 100</h1>
           </div>
         </div>
